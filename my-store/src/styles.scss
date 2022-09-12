@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@use './app/app.component.scss' as *;
+
+$font-family: 'Noto Sans', sans-serif;
+
+body {
+  font-family: $font-family;
+  background-color: lightblue;
+  padding-left: 1em;
+}
