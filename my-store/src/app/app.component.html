@@ -1,16 +1,20 @@
 <section>
-  <h2>Hola mundo</h2>
+  <h2>String interpolation</h2>
+
+  <p>
+    Enlaza las propiedades y metodos del componente con el template.
+  </p>
 
   <p>Bienvenidos a {{ title }}</p>
 
-  <img src="{{ imagen }}" width="250" height="250">
+  <img src="{{ imagen }}" width="250" height="250" loading="lazy" decoding="async">
 </section>
 
 <section>
   <h2>Property binding</h2>
 
   <p>
-    Usando el property binding podremos cambiar dinamicamente el valor de las propiedades de los elementos html.
+    Usando el property binding podremos cambiar dinamicamente el valor de las propiedades de los elementos html, enlaza las propiedades y metodos del componente con el template.
   </p>
 
   <form method="get">
@@ -32,7 +36,7 @@
   <h2>Event binding</h2>
 
   <p>
-    Usando el event binding podremos capturar eventos del DOM y mandar a llamar metodos declarados en el clase del componente.
+    Usando el event binding podremos capturar eventos del DOM y mandar a llamar metodos declarados en el clase del componente, enlaza los eventos del DOM con las propiedades y metodos del componente.
   </p>
 
   <button (click)="toggleButton()">
@@ -54,6 +58,76 @@
   </article>
 </section>
 
-<section>
+<section class="container-data-binding">
   <h2>Data binding</h2>
+
+  <p>
+    El data binding enlaza los datos entre el template y el componente, si ocurren cambios en las propiedades o metodos del componente, se veran reflejados en el template y al reves sucede igual.
+  </p>
+
+  <p>
+    Nombre:
+    <input type="text" [(ngModel)]="persona.nombre"  required #inputname="ngModel" class="container-data-binding__input" minlength="4" maxlength="14" name="nombre">
+  </p>
+
+  <p>Es valido el input de nombre: {{ inputname.valid }}</p>
+
+  <p>
+    Edad:
+    <input type="number" min="18" max="100" [(ngModel)]="persona.edad" required #inputage="ngModel" class="container-data-binding__input">
+  </p>
+</section>
+
+<section>
+  <h2>Estructuras de control</h2>
+
+  <h3>ngIf</h3>
+
+  <p>
+    El <em>ngIf</em> es un condicional, en el cual si se cumple la condicion se mostrara el elemento html. Dentro de la condicion podremos escribir codigo js o usar propiedades o metodos del componente.
+  </p>
+
+  <p>
+    Su sintaxis es la siguiente: <b><code>*ngIf="condicion; then plantilla1 else plantilla2"</code></b>, donde si la condicion se cumple se muestra la plantilla1, en cosa contrario se muestra la plantilla2.
+  </p>
+
+  <p *ngIf="showParagraph; then thenBlock else elseBlock"></p>
+
+  <ng-template #thenBlock>
+    <div>
+      <img src="https://www.freejpg.com.ar/asset/900/2a/2a45/F100008296.jpg" width="200" height="200" loading="lazy" decoding="async">
+      <p>Se cumplio la condicion.</p>
+    </div>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <div>
+      <img src="http://www.freejpg.com.ar/image-900/26/26e6/F100007601-ruta.jpg" width="200" height="200" loading="lazy" decoding="async">
+      <p>No se cumplio la condicion.</p>
+    </div>
+  </ng-template>
+
+  <button (click)="hideTemplate($event)">Mostrar plantilla2</button>
+</section>
+
+<section>
+  <h2>Bucle for</h2>
+
+  <div>
+    <input type="text" [(ngModel)]="newName">
+
+    <button (click)="insertName()">Agregar nombre</button>
+  </div>
+
+  <p>
+    Listado de nombres:
+  </p>
+
+  <ul>
+    <li *ngIf="nombres.length === 0">No hay nombres en la lista</li>
+    <li *ngFor="let nombre of nombres; index as i">
+      Indice: {{ i }} | Valor: {{ nombre }}
+      <button (click)="deleteName(i)">Eliminar</button>
+    </li>
+  </ul>
 </section>

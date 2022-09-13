@@ -14,6 +14,9 @@ export class AppComponent {
   }
   btnDisabled: boolean = true;
   counter: number = 0;
+  showParagraph: boolean = true;
+  nombres: string[] = ['Daniel', 'Luis', 'Felipe', 'Camila', 'Kilyan'];
+  newName: string = '';
 
   toggleButton(): void {
     (this.btnDisabled) ? this.btnDisabled = false : this.btnDisabled = true;
@@ -25,5 +28,22 @@ export class AppComponent {
 
   decreaseCounter(): void {
     (this.counter === 0) ? this.counter = 0 : this.counter--;
+  }
+
+  hideTemplate(event: Event): void {
+    const element = event.target as HTMLElement;
+
+    element.textContent = (this.showParagraph) ? "Mostrar plantilla2" : "Mostrar plantilla1";
+
+    this.showParagraph = !this.showParagraph;
+  }
+
+  deleteName(index: number) {
+    this.nombres.splice(index, 1);
+  }
+
+  insertName() {
+    this.nombres.push(this.newName);
+    this.newName = '';
   }
 }
