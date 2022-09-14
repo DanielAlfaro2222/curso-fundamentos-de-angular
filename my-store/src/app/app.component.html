@@ -130,4 +130,102 @@
       <button (click)="deleteName(i)">Eliminar</button>
     </li>
   </ul>
+
+  <p>
+    Listado de nombres, identificando el primer y ultimo elemento:
+  </p>
+
+  <ul>
+    <li *ngIf="nombres.length === 0">No hay nombres en la lista</li>
+    <li *ngFor="let nombre of nombres; let primero = first; let ultimo = last" [ngClass]="{primero,ultimo}">
+      {{ nombre }}
+    </li>
+  </ul>
+
+  <p>
+    Recorriendo una cadena:
+  </p>
+  <ul>
+    <li *ngFor="let palabra of persona.nombre.split(''); let i = index">
+      {{ palabra }} | {{ i }}
+    </li>
+  </ul>
+</section>
+
+<section class="container-products">
+  <h2>Productos</h2>
+
+  <div class="container-list-products">
+    <article *ngFor="let producto of products">
+      <img src="{{ producto.image }}" width="200" height="200" decoding="async" loading="lazy" class="container-list-products__img">
+      <p>{{ producto.name }}</p>
+      <p>$ {{ producto.price }} COP</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>ngSwitch</h2>
+
+  <p>
+    Funciona igual a un switch case en cualquier lenguaje de programacion.
+  </p>
+
+  <input type="text" [(ngModel)]="product" >
+
+  <div [ngSwitch]="product">
+    <p *ngSwitchCase="'El mejor juguete'.toLocaleLowerCase()">
+      El juguete tiene un precio de: 565
+    </p>
+
+    <p *ngSwitchCase="'Bicicleta casi nueva'.toLocaleLowerCase()">
+      El juguete tiene un precio de: 365
+    </p>
+
+    <p *ngSwitchCase="'Colleción de albumnes'.toLocaleLowerCase()">
+      El juguete tiene un precio de: 34
+    </p>
+
+    <p *ngSwitchCase="'Mis libros'.toLocaleLowerCase()">
+      El juguete tiene un precio de: 23
+    </p>
+
+    <p *ngSwitchCase="'Gafas'.toLocaleLowerCase()">
+      El juguete tiene un precio de: 3434
+    </p>
+
+    <p *ngSwitchDefault>
+      El juguete no existe
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Clases dinamicas</h2>
+
+  <p>
+    Nombre:
+    <input type="text" required minlength="4" maxlength="10" [(ngModel)]="product" #nameClassDinamic="ngModel">
+  </p>
+
+  <p class="valid" [class.invalid]="nameClassDinamic.invalid">
+    Este campo esta incorrecto, debe ingresar minimo 4 caracteres y maximo 10.
+  </p>
+</section>
+
+<section>
+  <h2>Estilos dinamicos</h2>
+
+  <p [style.color]="colorParagraph">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati voluptates officiis dolore quaerat beatae at magni reprehenderit consequatur tempore delectus nam rerum dolorem, quia libero laudantium ab provident excepturi ipsa? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus quisquam adipisci repudiandae, deserunt dolore vitae reprehenderit asperiores aut rerum aperiam velit similique aspernatur. Vero, delectus aliquam dignissimos quae placeat natus.
+    Voluptas harum tenetur earum assumenda expedita quaerat molestiae. Quis a hic eum esse dolorem consequuntur est architecto culpa eos? Omnis tenetur nihil error, earum fugit temporibus laborum tempora autem. In.
+  </p>
+
+  <input type="color" [(ngModel)]="colorParagraph">
+
+  <p [style.font-size.px]="btnDisabled ? '17' : '23'">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim assumenda incidunt quia cum quos animi ab, consectetur eos, vitae maiores provident, eligendi quasi minus consequatur molestiae fugit porro quam? Porro.
+    Molestiae earum laborum inventore perspiciatis dolorem, sapiente eligendi adipisci error, dolor ratione enim itaque rerum aliquam vitae accusantium! Fugit aut suscipit officia tenetur nostrum libero illo soluta porro velit harum.
+    Quisquam esse laboriosam, modi illo quibusdam eaque deleniti tempore ut provident repellendus inventore beatae sed debitis quod sunt culpa cum consectetur, velit odit aperiam? Neque nostrum qui officiis! Alias, magnam!
+  </p>
 </section>

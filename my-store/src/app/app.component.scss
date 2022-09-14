@@ -18,3 +18,44 @@ section {
   border-bottom: 1px solid;
   padding-bottom: 1.7em;
 }
+
+.primero {
+  color: red;
+
+  &::after {
+    content: 'Primer elemento';
+    margin-left: .5em;
+  }
+}
+
+.ultimo {
+  color: blue;
+
+  &::after {
+    content: 'Ultimo elemento';
+    margin-left: .5em;
+  }
+}
+
+.container-list-products {
+  display: flex;
+  column-gap: 2em;
+  text-align: center;
+
+  &__img {
+    border-radius: 50%;
+  }
+}
+
+.valid {
+  opacity: 0;
+  margin-bottom: 0;
+  cursor: default;
+  transition: opacity .5s;
+  color: red;
+}
+
+.invalid {
+  opacity: 1;
+  transition: opacity .5s;
+}

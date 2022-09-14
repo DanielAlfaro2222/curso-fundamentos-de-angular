@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './products.model';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,40 @@ export class AppComponent {
   showParagraph: boolean = true;
   nombres: string[] = ['Daniel', 'Luis', 'Felipe', 'Camila', 'Kilyan'];
   newName: string = '';
+  colorParagraph: string = 'black';
+  products: Product[] = [
+    {
+      name: 'El mejor juguete',
+      price: 565,
+      image: './assets/images/toy.webp',
+    },
+    {
+      name: 'Bicicleta casi nueva',
+      price: 356,
+      image: './assets/images/bike.webp'
+    },
+    {
+      name: 'Colleción de albumnes',
+      price: 34,
+      image: './assets/images/album.webp'
+    },
+    {
+      name: 'Mis libros',
+      price: 23,
+      image: './assets/images/books.webp'
+    },
+    {
+      name: 'Casa para perro',
+      price: 34,
+      image: './assets/images/house.webp'
+    },
+    {
+      name: 'Gafas',
+      price: 3434,
+      image: './assets/images/glasses.webp'
+    }
+  ];
+  product: string = '';
 
   toggleButton(): void {
     (this.btnDisabled) ? this.btnDisabled = false : this.btnDisabled = true;
