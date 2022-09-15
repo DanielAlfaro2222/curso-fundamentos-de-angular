@@ -52,10 +52,29 @@ section {
   margin-bottom: 0;
   cursor: default;
   transition: opacity .5s;
-  color: red;
+  color: green;
 }
 
 .invalid {
   opacity: 1;
   transition: opacity .5s;
+  color: red;
+}
+
+.input-valid {
+  opacity: 0;
+  font-size: .9rem;
+  cursor: default;
+  transition: opacity .4s;
+  color: red;
+  margin-top: .5em;
+}
+
+.input-invalid {
+  opacity: 1;
+  font-size: .9rem;
+  cursor: default;
+  transition: opacity .5s;
+  color: red;
+  margin-top: .5em;
 }

@@ -52,6 +52,16 @@ export class AppComponent {
     }
   ];
   product: string = '';
+  box = {
+    height: 100,
+    width: 100,
+    background: 'red'
+  };
+  formularioRegistro = {
+    nombre: '',
+    edad: '',
+    correo: ''
+  };
 
   toggleButton(): void {
     (this.btnDisabled) ? this.btnDisabled = false : this.btnDisabled = true;
@@ -73,12 +83,22 @@ export class AppComponent {
     this.showParagraph = !this.showParagraph;
   }
 
-  deleteName(index: number) {
+  deleteName(index: number): void {
     this.nombres.splice(index, 1);
   }
 
-  insertName() {
+  insertName(): void {
     this.nombres.push(this.newName);
     this.newName = '';
+  }
+
+  onRegister(event: Event): void {
+    event.preventDefault();
+    console.log(this.formularioRegistro);
+    this.formularioRegistro = {
+      nombre: '',
+      edad: '',
+      correo: ''
+    }
   }
 }

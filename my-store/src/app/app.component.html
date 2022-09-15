@@ -229,3 +229,65 @@
     Quisquam esse laboriosam, modi illo quibusdam eaque deleniti tempore ut provident repellendus inventore beatae sed debitis quod sunt culpa cum consectetur, velit odit aperiam? Neque nostrum qui officiis! Alias, magnam!
   </p>
 </section>
+
+<section>
+  <h2>ngClass</h2>
+
+  <p>
+    Usando <em>ngClass</em>, podremos agregar mas de una clase css al elemento html, dependiendo de varias condiciones.
+  </p>
+
+  <input type="text" required minlength="4" maxlength="12" #exampleNgClass="ngModel" [(ngModel)]="persona.nombre">
+
+  <p [ngClass]="{valid: exampleNgClass.valid, invalid: exampleNgClass.invalid}">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non incidunt in iste unde qui odit modi reprehenderit quaerat mollitia corrupti dolor velit sed ab, sapiente eius facilis accusamus magnam recusandae.
+  </p>
+</section>
+
+<section>
+  <h2>ngStyle</h2>
+
+  <p>
+    Usando <em>ngStyle</em> podremos cambiar dinamicamente varios estilos del elemento html.
+  </p>
+
+  <h3>Resultado</h3>
+
+  <input type="number" [(ngModel)]="box.width">
+  <input type="number" [(ngModel)]="box.height">
+  <input type="color" [(ngModel)]="box.background">
+
+  <div [ngStyle]="{'background': box.background, 'width.px': box.width, 'height.px': box.height}"></div>
+</section>
+
+<section>
+  <h2>Practica creacion de formulario</h2>
+
+  <form method="post" (ngSubmit)="onRegister($event)" #formRegister="ngForm">
+    <label>
+      Nombre:
+      <input type="text" required minlength="4" [(ngModel)]="formularioRegistro.nombre" name="nombre" #formName="ngModel" placeholder="Nombre">
+      <p [ngClass]="{'input-valid': formName.valid, 'input-invalid': formName.invalid}">
+        Mensaje de error
+      </p>
+    </label>
+
+    <label>
+      Edad:
+      <input type="number" required min="18" [(ngModel)]="formularioRegistro.edad" name="edad" #formAge="ngModel" placeholder="Edad">
+      <p [ngClass]="{'input-valid': formAge.valid, 'input-invalid': formAge.invalid}">
+        Mensaje de error
+      </p>
+    </label>
+
+    <label>
+      Correo:
+      <input type="email" required [(ngModel)]="formularioRegistro.correo" name="correo" #formEmail="ngModel" placeholder="Email">
+      <p [ngClass]="{'input-valid': formEmail.valid, 'input-invalid': formEmail.invalid}" >
+        Mensaje de error
+      </p>
+    </label>
+
+    <button [disabled]="formRegister.invalid">Registrarse</button>
+  </form>
+</section>
