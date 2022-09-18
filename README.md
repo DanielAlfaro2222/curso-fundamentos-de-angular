@@ -1,1 +1,1 @@
-# Proyecto del curso de fundamentos de angular de platzi
+# Curso fundamentos de angular de platzi
